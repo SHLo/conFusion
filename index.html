@@ -376,15 +376,15 @@
             $('#carousel-play').click(function () {
                 $('#mycarousel').carousel('cycle');
             });
+            $('#loginBtn').on('click', function () {
+                $('#loginModal').modal('toggle');
+            });
+
+            $('#reserveBtn').on('click', function () {
+                $('#reserveModal').modal('toggle');
+            });
         });
         
-        $('#loginBtn').on('click', function () {
-            $('#loginModal').modal('toggle');
-        });
-
-        $('#reserveBtn').on('click', function () {
-            $('#reserveModal').modal('toggle');
-        });
         
         
     </script>
