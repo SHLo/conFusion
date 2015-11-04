@@ -11,9 +11,9 @@
     <title>Ristorante Con Fusion</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap-social.css">
     <link href="css/mystyles.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -60,7 +60,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a data-toggle="modal" data-target="#loginModal">
+                        <a id="loginBtn">
                             <span class="glyphicon glyphicon-log-in"></span>
                              Login
                         </a>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-2">
                     <p style="padding: 40px;"></p>
-                    <a class="btn btn-warning btn-block" data-toggle="modal" data-target="#reserveModal">Reserve Table</a>
+                    <a id="reserveBtn" class="btn btn-warning btn-block">Reserve Table</a>
                 </div>
             </div>
         </div>
@@ -233,6 +233,14 @@
                         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
+                    <div id="carouselButtons" class="btn-group">
+                        <button id="carousel-pause" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                        </button>
+                        <button id="carousel-play" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -356,13 +364,29 @@
         </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
+            $('#mycarousel').carousel({interval: 2000});
+            $('#carousel-pause').click(function () {
+                $('#mycarousel').carousel('pause');
+            });
+            $('#carousel-play').click(function () {
+                $('#mycarousel').carousel('cycle');
+            });
         });
+        
+        $('#loginBtn').on('click', function () {
+            $('#loginModal').modal('toggle');
+        });
+
+        $('#reserveBtn').on('click', function () {
+            $('#reserveModal').modal('toggle');
+        });
+        
+        
     </script>
 </body>
 
