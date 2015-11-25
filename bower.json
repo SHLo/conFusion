@@ -1,9 +1,6 @@
 {
   "name": "conFusion",
-  "homepage": "https://github.com/SHLo/conFusion",
-  "authors": [
-    "SHLo <shlo.sam@gmail.com>"
-  ],
+  "version": "1.0.0",
   "description": "Website for an awesome restaurant",
   "main": "index.html",
   "moduleType": [],
@@ -12,8 +9,11 @@
     "Fusion",
     "Restaurant"
   ],
+  "authors": [
+    "Jogesh Muppala"
+  ],
   "license": "MIT",
-  "private": true,
+  "homepage": "",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.5",
-    "font-awesome": "~4.4.0"
+    "font-awesome": "~4.4.0",
+    "angular": "~1.4.7"
   }
 }
