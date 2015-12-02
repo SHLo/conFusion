@@ -45,7 +45,24 @@
             </div>
         </div>
         <div class="col-xs-9 col-xs-offset-1">
-            <p>Put the comments here</p>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h2>Customer Comments</h2>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="sort">Sort by:</label>
+                        <input id="sort" class="form-control" type="text" ng-model="dishDetailCtrl.sort">
+                    </div>
+                </div>
+            </div>
+            <blockquote ng-repeat="comment in dishDetailCtrl.dish.comments | orderBy: dishDetailCtrl.sort">
+                <p>{{comment.rating}} Stars</p>
+                <p>{{comment.comment}}</p>
+                <footer>
+                    {{comment.author}}, {{comment.date | date}}
+                </footer>
+            </blockquote>
         </div>
     </div>
 
@@ -101,7 +118,7 @@ rating:2,
 };
 
 this.dish = dish;
-
+this.sort = "";
 });
 
 </script>
