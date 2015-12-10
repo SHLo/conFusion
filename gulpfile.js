@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     changed = require('gulp-changed'),
     rev = require('gulp-rev'),
     browserSync = require('browser-sync'),
-    del = require('del');
+    del = require('del'),
+    ngannotate = require('gulp-ng-annotate');
 
 gulp.task('jshint', function () {
     return gulp.src('app/scripts/**/*.js')
@@ -21,10 +22,10 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('usemin', ['jshint'], function () {
-    return gulp.src('./app/menu.html')
+    return gulp.src('./app/contactus.html')
     .pipe(usemin({
         css: [minifycss(), rev()],
-        js: [uglify(), rev()]
+        js: [ngannotate(), uglify(), rev()]
     }))
     .pipe(gulp.dest('dist/'));
 });
@@ -42,8 +43,8 @@ gulp.task('clean', function () {
 });
 
 gulp.task('copyfonts', ['clean'], function () {
-    gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf, woff, eof, svg}*').pipe(gulp.dest('./dist/fonts'));
-    gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf, woff, eof, svg}*').pipe(gulp.dest('./dist/fonts'));
+    gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*').pipe(gulp.dest('./dist/fonts'));
+    gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*').pipe(gulp.dest('./dist/fonts'));
 });
 
 // Default task
@@ -73,7 +74,7 @@ gulp.task('browser-sync', ['default'], function () {
     browserSync.init(files, {
         server: {
             baseDir: 'dist',
-            index: 'menu.html'
+            index: 'contactus.html'
         }
     });                 
 
