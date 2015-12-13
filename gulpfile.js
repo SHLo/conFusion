@@ -22,7 +22,7 @@ gulp.task('jshint', function () {
 });
 
 gulp.task('usemin', ['jshint'], function () {
-    return gulp.src('./app/dishdetail.html')
+    return gulp.src('./app/*.html')
     .pipe(usemin({
         css: [minifycss(), rev()],
         js: [ngannotate(), uglify(), rev()]
@@ -47,9 +47,12 @@ gulp.task('copyfonts', ['clean'], function () {
     gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*').pipe(gulp.dest('./dist/fonts'));
 });
 
+gulp.task('copyviews', ['clean'], function () {
+    gulp.src('./app/views/**/*.html').pipe(gulp.dest('./dist/views'));
+});
 // Default task
 gulp.task('default', ['clean'], function () {
-    gulp.start('usemin', 'imagemin', 'copyfonts');
+    gulp.start('usemin', 'imagemin', 'copyfonts', 'copyviews');
 });
 
 gulp.task('watch', ['browser-sync'], function () {
@@ -74,7 +77,7 @@ gulp.task('browser-sync', ['default'], function () {
     browserSync.init(files, {
         server: {
             baseDir: 'dist',
-            index: 'dishdetail.html'
+            index: 'index.html'
         }
     });                 
 
