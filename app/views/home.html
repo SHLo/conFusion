@@ -14,7 +14,7 @@
                         <h4 class="media-heading">
                             {{featuredDish.name}} 
                             <span class="label label-danger">{{featuredDish.label}}</span>
-                            <span class="badge">{{featuredDish.price}}</span>
+                            <span class="badge">{{featuredDish.price | currency}}</span>
                         </h4>
                         <p>{{featuredDish.description}}</p>
                     </div>
@@ -34,7 +34,7 @@
                         <h4 class="media-heading">
                             {{promotion.name}}
                             <span class="label label-danger">{{promotion.label}}</span>
-                            <span class="badge">{{promotion.price}}</span>
+                            <span class="badge">{{promotion.price | currency}}</span>
                         </h4>
                         <p>{{promotion.description}}</p>
                     </div>
