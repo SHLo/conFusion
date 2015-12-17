@@ -25,7 +25,7 @@ gulp.task('usemin', ['jshint'], function () {
     return gulp.src('./app/*.html')
     .pipe(usemin({
         css: [minifycss(), rev()],
-        js: [ngannotate(), uglify(), rev()]
+        js: [ngannotate(),/* uglify(), */rev()]
     }))
     .pipe(gulp.dest('dist/'));
 });
@@ -78,7 +78,8 @@ gulp.task('browser-sync', ['default'], function () {
         server: {
             baseDir: 'dist',
             index: 'index.html'
-        }
+        },
+        port: 3000
     });                 
 
     gulp.watch(['./dist/**']).on('change', browserSync.reload);
